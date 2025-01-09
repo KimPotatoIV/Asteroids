@@ -1,0 +1,142 @@
+[gd_scene load_steps=21 format=3 uid="uid://c70vwt6a0v0r4"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_ya47k"]
+[ext_resource type="Texture2D" uid="uid://cylr33exv7g2j" path="res://scenes/player/player_sheet.png" id="2_63kum"]
+[ext_resource type="Texture2D" uid="uid://d0gd37f7m4mun" path="res://scenes/player/player_damaged_sheet.png" id="3_htkcd"]
+[ext_resource type="AudioStream" uid="uid://db3chi77guuu7" path="res://sounds/maou_se_battle07.wav" id="3_luske"]
+[ext_resource type="AudioStream" uid="uid://llvyuqinjwkf" path="res://sounds/maou_se_battle_explosion06.wav" id="5_xk7ai"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wqq3"]
+atlas = ExtResource("2_63kum")
+region = Rect2(0, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7cae"]
+atlas = ExtResource("2_63kum")
+region = Rect2(48, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xoq7"]
+atlas = ExtResource("2_63kum")
+region = Rect2(96, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87tlb"]
+atlas = ExtResource("2_63kum")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2g0n"]
+atlas = ExtResource("2_63kum")
+region = Rect2(192, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osen0"]
+atlas = ExtResource("2_63kum")
+region = Rect2(240, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pou5"]
+atlas = ExtResource("2_63kum")
+region = Rect2(288, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvqfi"]
+atlas = ExtResource("2_63kum")
+region = Rect2(336, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eid1k"]
+atlas = ExtResource("3_htkcd")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcgbj"]
+atlas = ExtResource("3_htkcd")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpfgt"]
+atlas = ExtResource("3_htkcd")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhksd"]
+atlas = ExtResource("3_htkcd")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnirc"]
+atlas = ExtResource("3_htkcd")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbxd3"]
+atlas = ExtResource("2_63kum")
+region = Rect2(0, 0, 48, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iuqb4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wqq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7cae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xoq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_87tlb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2g0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osen0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pou5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvqfi")
+}],
+"loop": true,
+"name": &"booster",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eid1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcgbj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpfgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhksd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnirc")
+}],
+"loop": false,
+"name": &"damaged",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbxd3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ya47k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_iuqb4")
+animation = &"damaged"
+autoplay = "idle"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -24, -17, 24, 0, 15, 17, 24)
+
+[node name="FireAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_luske")
+volume_db = -20.0
+
+[node name="DamagedAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xk7ai")
+volume_db = -20.0

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbgfo7jngwkwo"]
+
+[ext_resource type="Script" path="res://scenes/asteroid_small/asteroid_small.gd" id="1_f4kw6"]
+[ext_resource type="Texture2D" uid="uid://gl6fcuk70j5a" path="res://scenes/asteroid_small/asteroid_small.png" id="1_qp5dr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_avq1c"]
+radius = 15.0
+height = 32.0
+
+[node name="AsteroidSmall" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 3
+contact_monitor = true
+max_contacts_reported = 9999
+script = ExtResource("1_f4kw6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qp5dr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_avq1c")

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://baqlm6ad6dhj2"]
+
+[ext_resource type="Script" path="res://scenes/asteroid_middle/asteroid_middle.gd" id="1_gkmah"]
+[ext_resource type="Texture2D" uid="uid://dxplunjs7eok6" path="res://scenes/asteroid_middle/asteroid_middle.png" id="1_lsjfh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pw7nb"]
+radius = 25.0
+height = 58.0
+
+[node name="AsteroidMiddle" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 3
+contact_monitor = true
+max_contacts_reported = 9999
+script = ExtResource("1_gkmah")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lsjfh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pw7nb")

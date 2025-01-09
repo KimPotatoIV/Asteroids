@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpve6il4cjo2l"]
+
+[ext_resource type="Texture2D" uid="uid://bbc0cmpafxpei" path="res://scenes/asteroid_big/asteroid_big.png" id="1_ho5ml"]
+[ext_resource type="Script" path="res://scenes/asteroid_big/asteroid_big.gd" id="1_r03eg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_77ckh"]
+radius = 56.0
+height = 122.0
+
+[node name="AsteroidBig" type="RigidBody2D"]
+script = ExtResource("1_r03eg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ho5ml")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_77ckh")
