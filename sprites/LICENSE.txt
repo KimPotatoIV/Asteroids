@@ -1,0 +1,6 @@
+Image credit: NASA [https://www.nasa.gov/] © NASA, All Rights Reserved
+
+- asteroid_big
+- asteroid_middle
+- asteroid_small
+- background
